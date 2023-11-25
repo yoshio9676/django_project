@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:8
+    container_name: db
+    environment:
+      - MYSQL_DATABASE=django
+      - MYSQL_USER=django
+      - MYSQL_PASSWORD=secret
+      - MYSQL_ROOT_PASSWORD=secret
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data:/var/lib/mysql
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
+    restart: always
+  
+  web:
+    build: .
+    container_name: web
+    command: python3 manage.py runserver 0.0.0.0:80
+    volumes:
+      - .:/code
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+
+volumes:
+  data:
