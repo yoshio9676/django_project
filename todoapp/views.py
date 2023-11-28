@@ -2,5 +2,5 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 # Create your views here.
-def helloworldappview(request):
-    return HttpResponse('hello world app')
+def todoList(request):
+    return HttpResponse('todo list app index')

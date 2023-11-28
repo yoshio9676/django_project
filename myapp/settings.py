@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'helloworldapp.apps.HelloworldappConfig'
+    'helloworldapp.apps.HelloworldappConfig',
+    'todoapp.apps.TodoappConfig'
 ]
 
 MIDDLEWARE = [
