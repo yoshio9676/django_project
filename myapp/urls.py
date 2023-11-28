@@ -15,7 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from .views import helloworldFunction, helloJsonResponse
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    
+    # function based view サンプル
+    path('helloResponse', helloworldFunction),
+    path('jsonResponse', helloJsonResponse),
+    
+    # class based view サンプル
+    
 ]
