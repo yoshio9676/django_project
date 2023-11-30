@@ -39,8 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'helloworldapp.apps.HelloworldappConfig',
     'todoapp.apps.TodoappConfig',
-    'snsapp.apps.SnsappConfig',
-    # 'widget_tweaks'
+    'snsapp.apps.SnsappConfig'
 ]
 
 MIDDLEWARE = [

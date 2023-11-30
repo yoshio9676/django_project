@@ -11,6 +11,9 @@ urlpatterns = [
     # todo list app
     path('todo/', include('todoapp.urls')),
     
+    # sns app
+    path("sns/", include('snsapp.urls')),
+    
     # function based view サンプル
     path('helloResponse', helloworldFunction),
     path('jsonResponse', helloJsonResponse),
