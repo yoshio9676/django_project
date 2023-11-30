@@ -4,7 +4,7 @@
     <div class="container">
         {% for todo in object_list %}
             <div class="alert alert-{{ todo.priority }}" role="alert">
-                <p>{{ todo.title }}</p>
+                <p>{{ todo.title }} 期日:{{ todo.duedate|date:"Y/n/j" }}</p>
                 <a href="{% url 'todo_update' todo.pk %}" class="btn btn-info" role="button" aria-disabled="true">編集画面へ</a>
                 <a href="{% url 'todo_delete' todo.pk %}" class="btn btn-success" role="button" aria-disabled="true">削除画面へ</a>
                 <a href="{% url 'todo_detail' todo.pk %}" class="btn btn-primary" role="button" aria-disabled="true">詳細画面へ</a>
