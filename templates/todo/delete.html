@@ -9,4 +9,7 @@
         {% csrf_token %}
         <button type="submit" class="btn btn-danger">DELETE</button>
     </form>
+    <div>
+        <a href="{% url 'todo_list' %}" class="btn btn-primary">To Todo List</a>
+    </div>
 {% endblock content %}

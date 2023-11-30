@@ -1,6 +1,12 @@
 {% extends 'layouts/base.html' %}
 
 {% block content %}
-    {{ object.titie }}
-    {{ object.memo }}
+    <div class="alert alert-{{ object.priority }}" role="alert">
+        <p>{{ object.title }}</p>
+        <p>{{ object.memo }}</p>
+        <p>{{ object.duedate }}</p>
+    </div>
+    <div>
+        <a href="{% url 'todo_list' %}" class="btn btn-primary">To Todo List</a>
+    </div>
 {% endblock content %}
