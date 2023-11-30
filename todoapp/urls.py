@@ -5,6 +5,7 @@ urlpatterns = [
     # 作成
     path("create/", views.TodoCreate.as_view(), name="todo_create"),
     # 更新
+    path("update/<int:pk>", views.TodoUpdate.as_view(), name="todo_update"),
     # 削除
     path("delete/<int:pk>", views.TodoDelete.as_view(), name="todo_delete"),
     # 詳細
