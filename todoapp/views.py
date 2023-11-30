@@ -1,6 +1,20 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views.generic import ListView, DetailView, CreateView
+from .models import TodoModel
+from .forms import TodoForm
+from django.urls import reverse_lazy
 
-# Create your views here.
-def todoList(request):
-    return HttpResponse('todo list app index')
+class TodoList(ListView):
+    model = TodoModel
+    template_name = 'todo/list.html'
+    
+    
+class TodoDetail(DetailView):
+    model = TodoModel
+    template_name = 'todo/detail.html'
+    
+class TodoCreate(CreateView):
+    model = TodoModel
+    form_class = TodoForm
+    template_name = 'todo/create.html'
+    success_url = reverse_lazy('todo_list')

@@ -1,9 +1,12 @@
 from django.http import HttpResponse, JsonResponse
 from django.views.generic import TemplateView
+from pathlib import Path
+
 
 # function based view
 def helloworldFunction(request):
-    object = HttpResponse('<h1>hello, world!!!!</h1>')
+    path = Path(__file__).resolve().parent.parent
+    object = HttpResponse(path)
     return object
 
 def helloJsonResponse(request):

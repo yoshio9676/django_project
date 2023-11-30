@@ -1,0 +1,17 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+    <div class="container">
+        {% for todo in object_list %}
+            <div class="alert alert-{{ todo.priority }}" role="alert">
+                <p>{{ todo.title }}</p>
+                <a class="btn btn-info" role="button" aria-disabled="true">編集画面へ</a>
+                <a class="btn btn-success" role="button" aria-disabled="true">削除画面へ</a>
+                <a class="btn btn-primary" role="button" aria-disabled="true">詳細画面へ</a>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="to-create">
+        <a href="/todo/create/" class="btn btn-secondary">Create</a>
+    </div>
+{% endblock content %}
