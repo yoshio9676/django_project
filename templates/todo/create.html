@@ -2,7 +2,7 @@
 
 
 {% block content %}
-    <form action="/todo/create/" method="POST">
+    <form action="" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="btn btn-secondary">CREATE</button>
