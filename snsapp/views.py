@@ -5,3 +5,8 @@ from django.http import HttpResponse
 
 def getSns(request):
     return HttpResponse('<h1>SNS Page</h1>')
+
+def signupFunc(request):
+    return render(request, 'sns/signup.html', {
+        'some': 'some string'
+    })
