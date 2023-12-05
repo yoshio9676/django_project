@@ -75,6 +75,12 @@ def goodFunc(request, pk):
 @login_required
 def readFunc(request, pk):
     object = SnsModel.objects.get(pk=pk)
-    object.read = object.read + 1
-    object.save()
-    return redirect('sns_list')
+    username = request.user.get_username()
+    
+    if username in object.readtext:
+        return redirect('sns_detail', pk=object.pk)
+    else:
+        object.read = object.read + 1
+        object.readtext = object.readtext + ' ' + username
+        object.save()
+    return redirect('sns_detail', pk=object.pk)
