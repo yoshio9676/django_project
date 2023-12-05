@@ -1,5 +1,9 @@
 {% extends 'layouts/sns_base.html' %}
+{% load static %}
 
+{% block customcss %}
+    <link rel="stylesheet" href="{% static '/css/signin.css' %}">
+{% endblock customcss %}
 
 {% block content %}
     {% if error %}
@@ -11,7 +15,7 @@
     <div class="text-center">
         <form class="form-signup" action="{% url 'sns_logout' %}" method="POST">
             {% csrf_token %}
-            <h1 class="h3 mb-3 fw-normal">Please Logout</h1>
+            <h1 class="h3 mb-3 fw-normal">Logout</h1>
             <button class="btn btn-primary w-100 py-2" type="submit">Logout</button>
         </form>
     </div>
