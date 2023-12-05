@@ -74,20 +74,21 @@ def goodFunc(request, pk):
     object = SnsModel.objects.get(pk=pk)
     object.good = object.good + 1
     object.save()
-    return redirect('sns_list')
+    return redirect('sns_detail', pk=pk)
 
 @login_required
 def readFunc(request, pk):
     object = SnsModel.objects.get(pk=pk)
     username = request.user.get_username()
+    readtext = object.readtext if object.readtext else ''
     
-    if username in object.readtext:
-        return redirect('sns_detail', pk=object.pk)
+    if username in readtext:
+        return redirect('sns_detail', pk=pk)
     else:
         object.read = object.read + 1
-        object.readtext = object.readtext + ' ' + username
+        object.readtext = readtext + ' ' + username
         object.save()
-    return redirect('sns_detail', pk=object.pk)
+        return redirect('sns_detail', pk=pk)
 
 class SnsCreate(LoginRequiredMixin, CreateView):
     template_name = "sns/create.html"

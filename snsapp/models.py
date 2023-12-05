@@ -9,7 +9,7 @@ class SnsModel(models.Model):
     snsimage = models.ImageField(upload_to='')
     good = models.IntegerField(default=0, blank=True, null=True)
     read = models.IntegerField(default=0, blank=True, null=True)
-    readtext = models.TextField(null=True, blank=True)
+    readtext = models.TextField(default='', null=True, blank=True)
     
     def __str__(self) -> str:
         return self.title
