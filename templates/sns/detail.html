@@ -17,8 +17,16 @@
             <h6>投稿者: {{ object.author }}</h6>
             <p>{{ object.content }}</p>
             <p><img src="/media/{{ object.snsimage }}" alt="#"></p>
-            <a class="btn btn-danger" href="#" role="button">削除</a>
-            <a class="btn btn-primary" href="#" role="button">編集</a>
+            <p>いいね: {{ object.good }}</p>
+            <p>既読: {{ object.read }}</p>
+            <form action="{% url 'sns_good' object.pk %}" method='POST'>
+                {% csrf_token %}
+                <button class="btn btn-primary">いいねする</button>
+            </form>
+            <form action="{% url 'sns_read' object.pk %}" method='POST'>
+                {% csrf_token %}
+                <button class="btn btn-warning">既読する</button>
+            </form>
         </div>
     </div>
 {% endblock content %}

@@ -64,3 +64,17 @@ def listFunc(request):
 def detailFunc(request, pk):
     object = get_object_or_404(SnsModel, pk=pk)
     return render(request, 'sns/detail.html', {'object': object})
+
+@login_required
+def goodFunc(request, pk):
+    object = SnsModel.objects.get(pk=pk)
+    object.good = object.good + 1
+    object.save()
+    return redirect('sns_list')
+
+@login_required
+def readFunc(request, pk):
+    object = SnsModel.objects.get(pk=pk)
+    object.read = object.read + 1
+    object.save()
+    return redirect('sns_list')

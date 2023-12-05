@@ -12,16 +12,15 @@
 
 {% block content %}
     <div class="container">
-        
         {% for object in object_list %}
             <div class="alert alert-success" role="alert">
-                <h4>タイトル: {{ object.title }}</h4>
+                <h4>タイトル: <a href="{% url 'sns_detail' object.pk %}">{{ object.title }}</a></h4>
                 <h6>投稿者: {{ object.author }}</h6>
                 <p>{{ object.content }}</p>
                 <p><img src="/media/{{ object.snsimage }}" alt="#"></p>
-                <a class="btn btn-primary" href="{% url 'sns_detail' object.id %}" role="button">詳細</a>
+                <button class="btn btn-primary" disabled>いいね{{ object.good }}</button>
+                <button class="btn btn-warning" disabled>既読{{ object.read }}人</button>
             </div>
         {% endfor %}
-            
     </div>
 {% endblock content %}
