@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.db import IntegrityError
+from .models import SnsModel
 
 # Create your views here.
 
@@ -40,3 +41,7 @@ def logoutFunc(request):
         return redirect('sns_login')
     else:
         return render(request, 'sns/logout.html')
+    
+def listFunc(request):
+    object_list = SnsModel.objects.all()
+    return render(request, 'sns/list.html', {'object_list': object_list})
