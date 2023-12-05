@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.db import IntegrityError
 from .models import SnsModel
@@ -62,4 +62,5 @@ def listFunc(request):
 # 投稿詳細
 @login_required
 def detailFunc(request, pk):
-    pass
+    object = get_object_or_404(SnsModel, pk=pk)
+    return render(request, 'sns/detail.html', {'object': object})

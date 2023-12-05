@@ -1,0 +1,24 @@
+{% extends 'layouts/sns_base.html' %}
+
+
+{% block header %}
+<div class="alert alert-info" role="alert">
+    <h2>COMPANY SNS DETAIL</h2>
+    <h5>Login User : {{ user.username }}</h5>
+    <a class="btn btn-secondary" href="/sns/logout/">Logout</a>
+</div>
+{% endblock header %}
+
+{% block content %}
+    <div class="container">
+        <a href="{% url 'sns_list' %}" class="btn btn-secondary">SNS LIST</a>
+        <div class="alert alert-success" role="alert">
+            <h4>タイトル: {{ object.title }}</h4>
+            <h6>投稿者: {{ object.author }}</h6>
+            <p>{{ object.content }}</p>
+            <p><img src="/media/{{ object.snsimage }}" alt="#"></p>
+            <a class="btn btn-danger" href="#" role="button">削除</a>
+            <a class="btn btn-primary" href="#" role="button">編集</a>
+        </div>
+    </div>
+{% endblock content %}
