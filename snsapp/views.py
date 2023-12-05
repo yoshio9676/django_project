@@ -1,10 +1,14 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse
+from django.urls import reverse_lazy
 from django.db import IntegrityError
 from .models import SnsModel
+from .forms import SnsForm
+from django.views.generic import CreateView
+
 
 # Create your views here.
 
@@ -84,3 +88,9 @@ def readFunc(request, pk):
         object.readtext = object.readtext + ' ' + username
         object.save()
     return redirect('sns_detail', pk=object.pk)
+
+class SnsCreate(LoginRequiredMixin, CreateView):
+    template_name = "sns/create.html"
+    model = SnsModel
+    form_class = SnsForm
+    success_url = reverse_lazy('sns_list')

@@ -22,5 +22,6 @@
                 <button class="btn btn-warning" disabled>既読{{ object.read }}人</button>
             </div>
         {% endfor %}
+        <a href="{% url 'sns_create' %}" class="btn btn-danger">CREATE</a>
     </div>
 {% endblock content %}

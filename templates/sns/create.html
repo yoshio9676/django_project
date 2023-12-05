@@ -1,0 +1,33 @@
+{% extends 'layouts/sns_base.html' %}
+
+
+{% block header %}
+<div class="alert alert-info" role="alert">
+    <h2>COMPANY SNS CREATE</h2>
+    <h5>Login User : {{ user.username }}</h5>
+    <a class="btn btn-secondary" href="{% url 'sns_logout' %}">Logout</a>
+</div>
+{% endblock header %}
+
+
+{% block content %}
+    <div class="container">
+        <a href="{% url 'sns_list' %}" class="btn btn-secondary mb-4">SNS LIST</a>
+        <form method="POST" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>
+                <input name="title" type="text" placeholder="title">
+            </p>
+            <p>
+                <textarea name="content" cols="30" rows="10" placeholder="content"></textarea>
+            </p>
+            <p>
+                <input name="author" type="hidden" value="{{ user.username }}">
+            </p>
+            <p>
+                <input type="file" name="snsimage">
+            </p>
+            <button type="submit" class="btn btn-primary">CREATE</button>
+        </form>
+    </div>
+{% endblock content %}

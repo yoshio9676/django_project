@@ -8,5 +8,6 @@ urlpatterns = [
     path('list/', views.listFunc, name='sns_list'),
     path("detail/<int:pk>/", views.detailFunc, name="sns_detail"),
     path("good/<int:pk>/", views.goodFunc, name="sns_good"),
-    path("read/<int:pk>", views.readFunc, name="sns_read")
+    path("read/<int:pk>", views.readFunc, name="sns_read"),
+    path("create/", views.SnsCreate.as_view(), name="sns_create")
 ]
